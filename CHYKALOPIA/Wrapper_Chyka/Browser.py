@@ -2,6 +2,9 @@ from selenium.webdriver.support.ui import WebDriverWait
 import os
 from selenium import webdriver
 from selenium.webdriver.firefox.options import Options as FirefoxOptions
+import undetected_chromedriver as uc
+from CHYKALOPIA.Wrapper_Chyka.UIElement import UIElement as Element
+import time
 
 
 chromedriver_path = 'C:/chromedriver/'
@@ -23,16 +26,19 @@ class Browser:
             self.driver.maximize_window()
         elif browser_name.lower() == "chrome":
             options = webdriver.ChromeOptions()
+            options.add_experimental_option("excludeSwitches", ["enable-automation"])
             options.add_argument("--start-maximized")
             options.add_argument("--window-size=360,800")
 #            options.add_argument("--incognito")
             options.add_argument("--disable-popup-blocking")
             options.add_experimental_option("excludeSwitches", ['enable-automation'])
-            self.driver = webdriver.Chrome(options=options)
+
+#            self.driver = webdriver.Chrome(options=options)
+            self.driver = uc.Chrome()
+            #driver.get("https://chykalophia.com/")
         elif browser_name.lower() == 'remote':
             desired_capabilities = {
                 'browserName': 'chrome'}
-#            self.driver = webdriver.Remote(desired_capabilities=desired_capabilities, command_executor="http://localhost:4444/wd/hub")
             self.driver = webdriver.Remote(command_executor="http://localhost:4444/wd/hub")
 
 
