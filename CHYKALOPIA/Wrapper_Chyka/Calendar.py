@@ -13,7 +13,7 @@ class Calendar:
         self.iframe = Element(browser, By.XPATH, '//*[@id="get-started"]/div/div/iframe')
 
     def switch_to_calendar_frame(self):
-        self.driver.get_driver(self).switch_to.frame(self.iframe.get_element())
+        self.browser.get_driver().switch_to.frame(self.iframe.get_element())
         time.sleep(10)
 
     def switch_back_from_calendar_frame(self):
