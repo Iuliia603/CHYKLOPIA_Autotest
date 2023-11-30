@@ -56,3 +56,6 @@ class Browser:
 
     def shutdown(self):
         self.driver.quit()
+
+    def execute_script(self, script, *args):
+        return self.driver.execute_script(script, *args)
