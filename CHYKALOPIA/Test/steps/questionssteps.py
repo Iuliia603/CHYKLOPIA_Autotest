@@ -180,6 +180,7 @@ def user_clicks_question_how_long(context):
     context.design_page.click_how_long_ux_que()
     time.sleep(6)
 
+
 @then('answer about How long is visible')
 def answer_how_long_is_visible(context):
     context.design_page = UIUXPage(context.browser)
