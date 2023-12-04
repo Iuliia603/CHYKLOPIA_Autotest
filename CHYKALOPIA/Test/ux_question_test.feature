@@ -22,8 +22,8 @@ Feature: Frequently Asked Questions functionality
     And the second question color is black
     When user clicks on the question What should I prepare for my UX project?
     Then the second question color is gray
-#
-#
+
+
   Scenario:
     When user clicks on the question Do I need UX strategy?
     Then answer about need UX strategy is visible
