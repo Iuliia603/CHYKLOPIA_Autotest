@@ -1,12 +1,9 @@
 from behave import given, when, then
 from config.config_reader import ConfigReader
 import os
-from CHYKALOPIA.Wrapper_Chyka.Browser import Browser
 from CHYKALOPIA.Wrapper_Chyka.Header import Header
-from CHYKALOPIA.Wrapper_Chyka.Home_Page import HomePage
 from CHYKALOPIA.Wrapper_Chyka.Call_us_Page import CallUSPage
 from CHYKALOPIA.Wrapper_Chyka.Calendar import Calendar
-from CHYKALOPIA.Test.steps.chykasteps import user_opens_homepage
 import time
 
 
@@ -36,7 +33,6 @@ def user_clicks_get_start_btn(context):
 
 @then('the calendar is open')
 def calendar_is_open(context):
-#    browser = Browser
     calendar = Calendar(context.browser)
     calendar.switch_to_calendar_frame()
     time.sleep(6)
@@ -46,15 +42,28 @@ def calendar_is_open(context):
 @when('user selects data')
 def user_selects_data(context):
     calendar = Calendar(context.browser)
-    calendar.switch_to_calendar_frame()
-    calendar.select_the_date('November 29')
+    time.sleep(6)
+    calendar.select_the_date('December 12 ')
 
-# @when('user select time')
-# def user_select_time(context):
-#
-# @when('user clicks the Next button')
-# def user_clicks_next_btn(context):
-#
-# @then('the information about the call is displayed')
-# def information_about_call_is_displayed(context):
+
+@when('user select time')
+def user_select_time(context):
+    calendar = Calendar(context.browser)
+    time.sleep(2)
+    calendar.select_time_11()
+
+
+@when('user clicks the Next button')
+def user_clicks_next_btn(context):
+    calendar = Calendar(context.browser)
+    time.sleep(6)
+    calendar.click_next_btn()
+
+
+@then('the information about the call is displayed')
+def information_about_call_is_displayed(context):
+    calendar = Calendar(context.browser)
+    time.sleep(6)
+    assert calendar.get_information_about_call() == "11:00am - 11:45am, Tuesday, December 12, 2023"
+
 
