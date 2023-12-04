@@ -12,5 +12,5 @@ Feature: Book call functionality
     Then the calendar is open
     When user selects data
     And user select time
-#    And user clicks the Next button
-#    Then the information about the call is displayed
+    And user clicks the Next button
+    Then the information about the call is displayed
